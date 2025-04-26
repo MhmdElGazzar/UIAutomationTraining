@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selector Advanced Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .practice-section {
+            border: 1px solid #ddd;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .target-element {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .answer {
+            display: none;
+            background-color: #e8f5e9;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Selector Advanced Practice</h1>
+    
+    <div class="practice-section">
+        <h2>Exercise 1: Complex Attribute Pattern Matching</h2>
+        <p>Find the CSS selector for elements with data-id that follows the pattern "user-" followed by exactly 3 digits:</p>
+        <div class="target-element">
+            <div data-id="user-123">Find this</div>
+            <div data-id="user-12">Not this</div>
+            <div data-id="user-456">Find this too</div>
+        </div>
+        <button onclick="toggleAnswer('answer1')">Show Answer</button>
+        <div id="answer1" class="answer">
+            <p>CSS Selector: <code>[data-id^="user-"][data-id$="\d{3}"]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 2: Multiple Pseudo-Classes</h2>
+        <p>Find the CSS selector for links that are both visited and hovered:</p>
+        <div class="target-element">
+            <a href="#visited">Hover me after visiting</a>
+            <a href="#new">Unvisited link</a>
+        </div>
+        <button onclick="toggleAnswer('answer2')">Show Answer</button>
+        <div id="answer2" class="answer">
+            <p>CSS Selector: <code>a:visited:hover</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 3: Complex Descendant Patterns</h2>
+        <p>Find the CSS selector for paragraphs that are the only child of their type within a section:</p>
+        <div class="target-element">
+            <section>
+                <h2>Title</h2>
+                <p>Find this</p>
+            </section>
+            <section>
+                <p>Not this</p>
+                <p>Not this either</p>
+            </section>
+        </div>
+        <button onclick="toggleAnswer('answer3')">Show Answer</button>
+        <div id="answer3" class="answer">
+            <p>CSS Selector: <code>section p:only-of-type</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 4: Negation with Multiple Conditions</h2>
+        <p>Find the CSS selector for buttons that don't have either "primary" or "secondary" classes:</p>
+        <div class="target-element">
+            <button class="primary">Not this</button>
+            <button class="secondary">Not this</button>
+            <button class="tertiary">Find this</button>
+        </div>
+        <button onclick="toggleAnswer('answer4')">Show Answer</button>
+        <div id="answer4" class="answer">
+            <p>CSS Selector: <code>button:not(.primary):not(.secondary)</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 5: Combining Structural Pseudo-Classes</h2>
+        <p>Find the CSS selector for even-numbered list items that are also the last in their section:</p>
+        <div class="target-element">
+            <div class="section">
+                <li>Not this</li>
+                <li>Not this</li>
+                <li>Not this</li>
+                <li>Find this</li>
+            </div>
+        </div>
+        <button onclick="toggleAnswer('answer5')">Show Answer</button>
+        <div id="answer5" class="answer">
+            <p>CSS Selector: <code>li:nth-child(even):last-child</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 6: Complex Attribute Selectors Chain</h2>
+        <p>Find the CSS selector for inputs that are required, of type text, and have a placeholder:</p>
+        <div class="target-element">
+            <input type="text" required placeholder="Find this">
+            <input type="text" placeholder="Not this">
+            <input type="password" required placeholder="Not this">
+        </div>
+        <button onclick="toggleAnswer('answer6')">Show Answer</button>
+        <div id="answer6" class="answer">
+            <p>CSS Selector: <code>input[type="text"][required][placeholder]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 7: Nested Pseudo-Elements</h2>
+        <p>Find the CSS selector for the first letter of the first line of paragraphs:</p>
+        <div class="target-element">
+            <p>Target this first letter
+               Second line not affected</p>
+            <p>Another paragraph's first letter</p>
+        </div>
+        <button onclick="toggleAnswer('answer7')">Show Answer</button>
+        <div id="answer7" class="answer">
+            <p>CSS Selector: <code>p::first-line::first-letter</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 8: Complex Parent-Child Relationships</h2>
+        <p>Find the CSS selector for divs that contain both an image and a paragraph as direct children:</p>
+        <div class="target-element">
+            <div>
+                <img src="test.jpg">
+                <p>Text</p>
+            </div>
+            <div>
+                <img src="test.jpg">
+                <span>Not this</span>
+            </div>
+        </div>
+        <button onclick="toggleAnswer('answer8')">Show Answer</button>
+        <div id="answer8" class="answer">
+            <p>CSS Selector: <code>div:has(> img):has(> p)</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 9: Multiple Structural Conditions</h2>
+        <p>Find the CSS selector for paragraphs that are both first of their type and last child:</p>
+        <div class="target-element">
+            <div>
+                <span>Not this</span>
+                <p>Not this</p>
+                <p>Not this</p>
+            </div>
+            <div>
+                <p>Find this</p>
+            </div>
+        </div>
+        <button onclick="toggleAnswer('answer9')">Show Answer</button>
+        <div id="answer9" class="answer">
+            <p>CSS Selector: <code>p:first-of-type:last-child</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 10: Complex Sibling Combinations</h2>
+        <p>Find the CSS selector for paragraphs that have a heading before them and an image after them:</p>
+        <div class="target-element">
+            <h2>Heading</h2>
+            <p>Find this</p>
+            <img src="test.jpg">
+            <p>Not this</p>
+        </div>
+        <button onclick="toggleAnswer('answer10')">Show Answer</button>
+        <div id="answer10" class="answer">
+            <p>CSS Selector: <code>h2 ~ p:has(+ img)</code></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            const answer = document.getElementById(id);
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+            } else {
+                answer.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

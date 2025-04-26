@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locator Practice</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+        }
+
+        .sidenav {
+            width: 250px;
+            height: 100vh;
+            background-color: #333;
+            padding-top: 20px;
+            position: fixed;
+        }
+
+        .sidenav h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidenav a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+            background-color: #444;
+        }
+
+        .sidenav .section {
+            margin-bottom: 20px;
+        }
+
+        .sidenav .section-title {
+            color: #fff;
+            padding: 10px 15px;
+            font-weight: bold;
+            border-bottom: 1px solid #555;
+        }
+
+        .sidenav .subsection {
+            padding-left: 30px;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .welcome {
+            text-align: center;
+            padding: 50px;
+        }
+
+        iframe {
+            width: 100%;
+            height: calc(100vh - 40px);
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidenav">
+        <h2>Locator Practice</h2>
+        
+        <div class="section">
+            <div class="section-title">XPath</div>
+            <div class="subsection">
+                <a href="pages/xpath/beginner.html" target="practiceFrame">Beginner</a>
+                <a href="pages/xpath/intermediate.html" target="practiceFrame">Intermediate</a>
+                <a href="pages/xpath/advanced.html" target="practiceFrame">Advanced</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">CSS</div>
+            <div class="subsection">
+                <a href="pages/css/beginner.html" target="practiceFrame">Beginner</a>
+                <a href="pages/css/intermediate.html" target="practiceFrame">Intermediate</a>
+                <a href="pages/css/advanced.html" target="practiceFrame">Advanced</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <iframe name="practiceFrame" src="about:blank" id="contentFrame">
+        </iframe>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const frame = document.getElementById('contentFrame');
+            frame.contentWindow.document.body.innerHTML = `
+                <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+                    <h1>Welcome to Locator Practice</h1>
+                    <p>Select a practice level from the menu on the left to begin.</p>
+                    <p>Each section contains progressively challenging exercises to help you master XPath and CSS selectors.</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

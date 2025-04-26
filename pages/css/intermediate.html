@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selector Intermediate Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .practice-section {
+            border: 1px solid #ddd;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .target-element {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .answer {
+            display: none;
+            background-color: #e8f5e9;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Selector Intermediate Practice</h1>
+    
+    <div class="practice-section">
+        <h2>Exercise 1: Adjacent Sibling Selector</h2>
+        <p>Find the CSS selector for paragraphs that immediately follow a heading:</p>
+        <div class="target-element">
+            <h3>Heading</h3>
+            <p>Find this</p>
+            <p>Not this</p>
+            <h3>Another Heading</h3>
+            <p>Find this too</p>
+        </div>
+        <button onclick="toggleAnswer('answer1')">Show Answer</button>
+        <div id="answer1" class="answer">
+            <p>CSS Selector: <code>h3 + p</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 2: General Sibling Selector</h2>
+        <p>Find the CSS selector for all paragraphs that follow a heading:</p>
+        <div class="target-element">
+            <p>Not this</p>
+            <h3>Heading</h3>
+            <p>Find this</p>
+            <span>Not this</span>
+            <p>Find this too</p>
+        </div>
+        <button onclick="toggleAnswer('answer2')">Show Answer</button>
+        <div id="answer2" class="answer">
+            <p>CSS Selector: <code>h3 ~ p</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 3: Attribute Contains Selector</h2>
+        <p>Find the CSS selector for elements with a class containing "btn":</p>
+        <div class="target-element">
+            <button class="primary-btn">Find this</button>
+            <button class="btn-secondary">Find this too</button>
+            <button class="button">Not this</button>
+        </div>
+        <button onclick="toggleAnswer('answer3')">Show Answer</button>
+        <div id="answer3" class="answer">
+            <p>CSS Selector: <code>[class*="btn"]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 4: Not Selector</h2>
+        <p>Find the CSS selector for paragraphs that don't have the class "exclude":</p>
+        <div class="target-element">
+            <p class="exclude">Not this</p>
+            <p>Find this</p>
+            <p class="exclude">Not this either</p>
+            <p>Find this too</p>
+        </div>
+        <button onclick="toggleAnswer('answer4')">Show Answer</button>
+        <div id="answer4" class="answer">
+            <p>CSS Selector: <code>p:not(.exclude)</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 5: Nth Child Selector</h2>
+        <p>Find the CSS selector for every odd list item:</p>
+        <div class="target-element">
+            <ul>
+                <li>Find this (1st)</li>
+                <li>Not this (2nd)</li>
+                <li>Find this (3rd)</li>
+                <li>Not this (4th)</li>
+                <li>Find this (5th)</li>
+            </ul>
+        </div>
+        <button onclick="toggleAnswer('answer5')">Show Answer</button>
+        <div id="answer5" class="answer">
+            <p>CSS Selector: <code>li:nth-child(odd)</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 6: Last Child Selector</h2>
+        <p>Find the CSS selector for the last paragraph in each section:</p>
+        <div class="target-element">
+            <div class="section">
+                <p>Not this</p>
+                <p>Find this</p>
+            </div>
+            <div class="section">
+                <p>Not this</p>
+                <p>Not this</p>
+                <p>Find this</p>
+            </div>
+        </div>
+        <button onclick="toggleAnswer('answer6')">Show Answer</button>
+        <div id="answer6" class="answer">
+            <p>CSS Selector: <code>.section p:last-child</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 7: Empty Selector</h2>
+        <p>Find the CSS selector for empty paragraphs:</p>
+        <div class="target-element">
+            <p>Not this</p>
+            <p></p>
+            <p> </p>
+            <p>Not this either</p>
+        </div>
+        <button onclick="toggleAnswer('answer7')">Show Answer</button>
+        <div id="answer7" class="answer">
+            <p>CSS Selector: <code>p:empty</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 8: Attribute Starts With Selector</h2>
+        <p>Find the CSS selector for links that start with "mailto:":</p>
+        <div class="target-element">
+            <a href="https://example.com">Not this</a>
+            <a href="mailto:user@example.com">Find this</a>
+            <a href="mailto:admin@example.com">Find this too</a>
+        </div>
+        <button onclick="toggleAnswer('answer8')">Show Answer</button>
+        <div id="answer8" class="answer">
+            <p>CSS Selector: <code>a[href^="mailto:"]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 9: Attribute Ends With Selector</h2>
+        <p>Find the CSS selector for images that end with ".png":</p>
+        <div class="target-element">
+            <img src="image.jpg" alt="Not this">
+            <img src="icon.png" alt="Find this">
+            <img src="logo.png" alt="Find this too">
+        </div>
+        <button onclick="toggleAnswer('answer9')">Show Answer</button>
+        <div id="answer9" class="answer">
+            <p>CSS Selector: <code>img[src$=".png"]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 10: Nth of Type Selector</h2>
+        <p>Find the CSS selector for every second paragraph of its type:</p>
+        <div class="target-element">
+            <div>
+                <p>Not this</p>
+                <p>Find this</p>
+                <p>Not this</p>
+                <p>Find this</p>
+            </div>
+        </div>
+        <button onclick="toggleAnswer('answer10')">Show Answer</button>
+        <div id="answer10" class="answer">
+            <p>CSS Selector: <code>p:nth-of-type(2n)</code></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            const answer = document.getElementById(id);
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+            } else {
+                answer.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XPath Beginner Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .practice-section {
+            border: 1px solid #ddd;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .target-element {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .answer {
+            display: none;
+            background-color: #e8f5e9;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>XPath Beginner Practice</h1>
+    
+    <div class="practice-section">
+        <h2>Exercise 1: Basic Element Selection</h2>
+        <p>Find the XPath for the button with text "Click Me":</p>
+        <div class="target-element">
+            <button id="simple-button">Click Me</button>
+        </div>
+        <button onclick="toggleAnswer('answer1')">Show Answer</button>
+        <div id="answer1" class="answer">
+            <p>XPath: <code>//button[@id='simple-button']</code></p>
+            <p>Alternative: <code>//button[text()='Click Me']</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 2: Element with Class</h2>
+        <p>Find the XPath for the paragraph with class "special-text":</p>
+        <div class="target-element">
+            <p class="special-text">This is a special paragraph</p>
+            <p>This is a normal paragraph</p>
+        </div>
+        <button onclick="toggleAnswer('answer2')">Show Answer</button>
+        <div id="answer2" class="answer">
+            <p>XPath: <code>//p[@class='special-text']</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 3: Element with Multiple Attributes</h2>
+        <p>Find the XPath for the input field with type "text" and name "username":</p>
+        <div class="target-element">
+            <input type="text" name="username" placeholder="Enter username">
+            <input type="password" name="password" placeholder="Enter password">
+        </div>
+        <button onclick="toggleAnswer('answer3')">Show Answer</button>
+        <div id="answer3" class="answer">
+            <p>XPath: <code>//input[@type='text' and @name='username']</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 4: Element by Index</h2>
+        <p>Find the XPath for the second list item:</p>
+        <div class="target-element">
+            <ul>
+                <li>First item</li>
+                <li>Second item</li>
+                <li>Third item</li>
+            </ul>
+        </div>
+        <button onclick="toggleAnswer('answer4')">Show Answer</button>
+        <div id="answer4" class="answer">
+            <p>XPath: <code>//li[2]</code></p>
+            <p>Alternative: <code>//li[text()='Second item']</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 5: Element by Text Content</h2>
+        <p>Find the XPath for the link containing "documentation":</p>
+        <div class="target-element">
+            <a href="#">Home</a>
+            <a href="#">View documentation</a>
+            <a href="#">Contact</a>
+        </div>
+        <button onclick="toggleAnswer('answer5')">Show Answer</button>
+        <div id="answer5" class="answer">
+            <p>XPath: <code>//a[contains(text(), 'documentation')]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 6: Element with Specific Parent</h2>
+        <p>Find the XPath for the span inside the div with class "container":</p>
+        <div class="target-element">
+            <div class="container">
+                <span>Target text</span>
+            </div>
+            <div class="other">
+                <span>Other text</span>
+            </div>
+        </div>
+        <button onclick="toggleAnswer('answer6')">Show Answer</button>
+        <div id="answer6" class="answer">
+            <p>XPath: <code>//div[@class='container']/span</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 7: First Element of Type</h2>
+        <p>Find the XPath for the first paragraph in the document:</p>
+        <div class="target-element">
+            <p>First paragraph</p>
+            <p>Second paragraph</p>
+            <p>Third paragraph</p>
+        </div>
+        <button onclick="toggleAnswer('answer7')">Show Answer</button>
+        <div id="answer7" class="answer">
+            <p>XPath: <code>(//p)[1]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 8: Element with Specific Attribute Value</h2>
+        <p>Find the XPath for the image with alt text "Logo":</p>
+        <div class="target-element">
+            <img src="banner.jpg" alt="Banner">
+            <img src="logo.png" alt="Logo">
+            <img src="icon.png" alt="Icon">
+        </div>
+        <button onclick="toggleAnswer('answer8')">Show Answer</button>
+        <div id="answer8" class="answer">
+            <p>XPath: <code>//img[@alt='Logo']</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 9: Last Element of Type</h2>
+        <p>Find the XPath for the last div in the container:</p>
+        <div class="target-element">
+            <div class="wrapper">
+                <div>First div</div>
+                <div>Middle div</div>
+                <div>Last div</div>
+            </div>
+        </div>
+        <button onclick="toggleAnswer('answer9')">Show Answer</button>
+        <div id="answer9" class="answer">
+            <p>XPath: <code>//div[@class='wrapper']/div[last()]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 10: Element with Multiple Classes</h2>
+        <p>Find the XPath for the element with both classes "btn" and "primary":</p>
+        <div class="target-element">
+            <button class="btn">Regular Button</button>
+            <button class="btn primary">Primary Button</button>
+            <button class="btn secondary">Secondary Button</button>
+        </div>
+        <button onclick="toggleAnswer('answer10')">Show Answer</button>
+        <div id="answer10" class="answer">
+            <p>XPath: <code>//button[@class='btn primary']</code></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            const answer = document.getElementById(id);
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+            } else {
+                answer.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

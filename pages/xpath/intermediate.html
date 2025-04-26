@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XPath Intermediate Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .practice-section {
+            border: 1px solid #ddd;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .target-element {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .answer {
+            display: none;
+            background-color: #e8f5e9;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>XPath Intermediate Practice</h1>
+    
+    <div class="practice-section">
+        <h2>Exercise 1: Contains Function</h2>
+        <p>Find the XPath for all links containing the word "product" in their href:</p>
+        <div class="target-element">
+            <a href="/products/1">Product One</a>
+            <a href="/about">About Us</a>
+            <a href="/products/2">Product Two</a>
+            <a href="/contact">Contact</a>
+        </div>
+        <button onclick="toggleAnswer('answer1')">Show Answer</button>
+        <div id="answer1" class="answer">
+            <p>XPath: <code>//a[contains(@href, 'product')]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 2: Multiple Conditions</h2>
+        <p>Find the XPath for input fields that are required and of type "email":</p>
+        <div class="target-element">
+            <input type="text" required>
+            <input type="email" required>
+            <input type="email">
+            <input type="password" required>
+        </div>
+        <button onclick="toggleAnswer('answer2')">Show Answer</button>
+        <div id="answer2" class="answer">
+            <p>XPath: <code>//input[@type='email' and @required]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 3: Following Sibling</h2>
+        <p>Find the XPath for paragraphs that come after a heading:</p>
+        <div class="target-element">
+            <h3>Section 1</h3>
+            <p>Find this</p>
+            <p>And this</p>
+            <span>Not this</span>
+            <h3>Section 2</h3>
+            <p>Find this too</p>
+        </div>
+        <button onclick="toggleAnswer('answer3')">Show Answer</button>
+        <div id="answer3" class="answer">
+            <p>XPath: <code>//h3/following-sibling::p</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 4: Starts-with Function</h2>
+        <p>Find the XPath for elements with IDs starting with "user-":</p>
+        <div class="target-element">
+            <div id="user-profile">Profile</div>
+            <div id="user-settings">Settings</div>
+            <div id="admin-panel">Admin</div>
+        </div>
+        <button onclick="toggleAnswer('answer4')">Show Answer</button>
+        <div id="answer4" class="answer">
+            <p>XPath: <code>//*[starts-with(@id, 'user-')]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 5: Position Function</h2>
+        <p>Find the XPath for every odd-numbered row in the table:</p>
+        <div class="target-element">
+            <table>
+                <tr><td>Row 1</td></tr>
+                <tr><td>Row 2</td></tr>
+                <tr><td>Row 3</td></tr>
+                <tr><td>Row 4</td></tr>
+            </table>
+        </div>
+        <button onclick="toggleAnswer('answer5')">Show Answer</button>
+        <div id="answer5" class="answer">
+            <p>XPath: <code>//tr[position() mod 2 = 1]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 6: Parent Axis</h2>
+        <p>Find the XPath for the parent div of a span with text "Target":</p>
+        <div class="target-element">
+            <div class="container">
+                <span>Other</span>
+            </div>
+            <div class="wrapper">
+                <span>Target</span>
+            </div>
+        </div>
+        <button onclick="toggleAnswer('answer6')">Show Answer</button>
+        <div id="answer6" class="answer">
+            <p>XPath: <code>//span[text()='Target']/parent::div</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 7: Ancestor Axis</h2>
+        <p>Find the XPath for all ancestor divs of a specific paragraph:</p>
+        <div class="target-element">
+            <div class="outer">
+                <div class="inner">
+                    <div class="content">
+                        <p id="target">Find ancestors</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="toggleAnswer('answer7')">Show Answer</button>
+        <div id="answer7" class="answer">
+            <p>XPath: <code>//p[@id='target']/ancestor::div</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 8: Preceding Sibling</h2>
+        <p>Find the XPath for all list items before the one with class "current":</p>
+        <div class="target-element">
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li class="current">Current Item</li>
+                <li>Item 4</li>
+            </ul>
+        </div>
+        <button onclick="toggleAnswer('answer8')">Show Answer</button>
+        <div id="answer8" class="answer">
+            <p>XPath: <code>//li[@class='current']/preceding-sibling::li</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 9: Text Contains and Normalize Space</h2>
+        <p>Find the XPath for paragraphs containing the word "important" (case-insensitive):</p>
+        <div class="target-element">
+            <p>This is Important text.</p>
+            <p>Regular text</p>
+            <p>Another IMPORTANT notice</p>
+        </div>
+        <button onclick="toggleAnswer('answer9')">Show Answer</button>
+        <div id="answer9" class="answer">
+            <p>XPath: <code>//p[contains(translate(text(), 'IMPORTANT', 'important'), 'important')]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 10: Complex Attribute Selection</h2>
+        <p>Find the XPath for inputs with a data-type attribute containing either "text" or "number":</p>
+        <div class="target-element">
+            <input data-type="text-input">
+            <input data-type="number-field">
+            <input data-type="checkbox">
+        </div>
+        <button onclick="toggleAnswer('answer10')">Show Answer</button>
+        <div id="answer10" class="answer">
+            <p>XPath: <code>//input[contains(@data-type, 'text') or contains(@data-type, 'number')]</code></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            const answer = document.getElementById(id);
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+            } else {
+                answer.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

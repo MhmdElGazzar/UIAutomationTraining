@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XPath Advanced Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .practice-section {
+            border: 1px solid #ddd;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .target-element {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .answer {
+            display: none;
+            background-color: #e8f5e9;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>XPath Advanced Practice</h1>
+    
+    <div class="practice-section">
+        <h2>Exercise 1: Complex Predicates with Functions</h2>
+        <p>Find the XPath for divs that have exactly 3 child paragraphs, where the second paragraph contains "target":</p>
+        <div class="target-element">
+            <div class="section-1">
+                <p>First</p>
+                <p>This is the target text</p>
+                <p>Last</p>
+            </div>
+            <div class="section-2">
+                <p>One</p>
+                <p>Two</p>
+            </div>
+        </div>
+        <button onclick="toggleAnswer('answer1')">Show Answer</button>
+        <div id="answer1" class="answer">
+            <p>XPath: <code>//div[count(p)=3 and p[2][contains(text(), 'target')]]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 2: Dynamic Attribute Matching</h2>
+        <p>Find the XPath for elements with a data-timestamp from today (dynamic date):</p>
+        <div class="target-element">
+            <div data-timestamp="2024-04-26">Today's content</div>
+            <div data-timestamp="2024-04-25">Yesterday's content</div>
+            <div data-timestamp="2024-04-27">Tomorrow's content</div>
+        </div>
+        <button onclick="toggleAnswer('answer2')">Show Answer</button>
+        <div id="answer2" class="answer">
+            <p>XPath: <code>//*[substring(@data-timestamp, 1, 10) = substring(string(current-date()), 1, 10)]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 3: Complex Ancestor-Descendant</h2>
+        <p>Find the XPath for spans that are descendants of a div with class "container" but not inside a paragraph:</p>
+        <div class="target-element">
+            <div class="container">
+                <span>Find this</span>
+                <p><span>Not this</span></p>
+                <div><span>Find this too</span></div>
+            </div>
+        </div>
+        <button onclick="toggleAnswer('answer3')">Show Answer</button>
+        <div id="answer3" class="answer">
+            <p>XPath: <code>//div[@class='container']//span[not(ancestor::p)]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 4: Multiple Axis Navigation</h2>
+        <p>Find the XPath for paragraphs that have a preceding h2 and a following button:</p>
+        <div class="target-element">
+            <h2>Section 1</h2>
+            <p>Find this paragraph</p>
+            <button>Next</button>
+            <p>Not this one</p>
+            <h2>Section 2</h2>
+            <span>Not a paragraph</span>
+            <button>Next</button>
+        </div>
+        <button onclick="toggleAnswer('answer4')">Show Answer</button>
+        <div id="answer4" class="answer">
+            <p>XPath: <code>//p[preceding::h2 and following::button[1]]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 5: Complex String Functions</h2>
+        <p>Find the XPath for elements with text that starts with a number and ends with "items":</p>
+        <div class="target-element">
+            <div>5 items</div>
+            <div>No items</div>
+            <div>10 items remaining</div>
+            <div>3 items</div>
+        </div>
+        <button onclick="toggleAnswer('answer5')">Show Answer</button>
+        <div id="answer5" class="answer">
+            <p>XPath: <code>//*[matches(text(), '^\d+\s+items$')]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 6: Nested Conditions</h2>
+        <p>Find the XPath for links that have both an image and text content, where the image has an alt attribute:</p>
+        <div class="target-element">
+            <a href="#"><img src="icon1.png" alt="Icon"> Link 1</a>
+            <a href="#"><img src="icon2.png"> Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+        <button onclick="toggleAnswer('answer6')">Show Answer</button>
+        <div id="answer6" class="answer">
+            <p>XPath: <code>//a[img[@alt] and normalize-space(text())]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 7: Complex Position Logic</h2>
+        <p>Find the XPath for every third list item that also has a specific class:</p>
+        <div class="target-element">
+            <ul>
+                <li class="special">Item 1</li>
+                <li>Item 2</li>
+                <li class="special">Item 3</li>
+                <li>Item 4</li>
+                <li>Item 5</li>
+                <li class="special">Item 6</li>
+            </ul>
+        </div>
+        <button onclick="toggleAnswer('answer7')">Show Answer</button>
+        <div id="answer7" class="answer">
+            <p>XPath: <code>//li[@class='special' and (position() mod 3 = 0)]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 8: Multi-Level Hierarchy</h2>
+        <p>Find the XPath for spans that are exactly 3 levels deep in div elements:</p>
+        <div class="target-element">
+            <div>
+                <div>
+                    <div>
+                        <span>Find this</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <span>Not this</span>
+                </div>
+            </div>
+        </div>
+        <button onclick="toggleAnswer('answer8')">Show Answer</button>
+        <div id="answer8" class="answer">
+            <p>XPath: <code>//div/div/div/span[count(ancestor::div)=3]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 9: Complex Attribute Manipulation</h2>
+        <p>Find the XPath for elements where the data-value attribute is a number greater than 100:</p>
+        <div class="target-element">
+            <div data-value="50">Small value</div>
+            <div data-value="150">Find this</div>
+            <div data-value="75">Medium value</div>
+            <div data-value="200">Find this too</div>
+        </div>
+        <button onclick="toggleAnswer('answer9')">Show Answer</button>
+        <div id="answer9" class="answer">
+            <p>XPath: <code>//*[number(@data-value) > 100]</code></p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h2>Exercise 10: Combined Axes and Functions</h2>
+        <p>Find the XPath for paragraphs that have a specific class and are between two headings:</p>
+        <div class="target-element">
+            <h2>First Heading</h2>
+            <p class="note">Find this</p>
+            <p class="note">And this</p>
+            <h2>Second Heading</h2>
+            <p class="note">Not this</p>
+        </div>
+        <button onclick="toggleAnswer('answer10')">Show Answer</button>
+        <div id="answer10" class="answer">
+            <p>XPath: <code>//p[@class='note' and preceding::h2[1][text()='First Heading'] and following::h2[1][text()='Second Heading']]</code></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            const answer = document.getElementById(id);
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+            } else {
+                answer.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
